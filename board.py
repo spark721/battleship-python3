@@ -1,6 +1,8 @@
 
 import os
-from typing import Dict, List
+from typing import List
+
+from ship import Ship
 
 class Board():
 
@@ -57,3 +59,24 @@ class Board():
             return True
         else:
             return False
+
+
+    def place_ship(self, ship: Ship):
+        '''
+        takes an instance of ship and place it on the board
+        '''
+        while True:
+            if ship.valid_position(self): break
+            else: ship.random_position(self)
+
+        row = ship.pos[0]
+        col = ship.pos[1]
+        count = ship.size
+
+        while count > 0:
+            self.grid[row][col] = 'S'
+            if ship.vector == 'h':
+                col += 1
+            elif ship.vector == 'v':
+                row += 1
+            count -= 1

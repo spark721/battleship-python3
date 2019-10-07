@@ -2,7 +2,6 @@
 import random
 from typing import List
 
-from board import Board
 
 class Ship():
     
@@ -17,16 +16,17 @@ class Ship():
         self.pos = [0, 0]
 
 
-    def random_position(self, board: Board):
+    def random_position(self, board):
         '''
         generate pseudo-random numbers
         for ship's starting position
         '''
         self.pos[0] = random.randrange(0, board.size)
         self.pos[1] = random.randrange(0, board.size)
+        self.vector = random.choice(['h', 'v'])
 
 
-    def valid_position(self, board: Board) -> bool:
+    def valid_position(self, board) -> bool:
         '''
         check if a ship can be place on the grid
         '''
