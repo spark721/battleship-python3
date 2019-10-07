@@ -44,3 +44,17 @@ class Board():
                     hidden_grid[row][col] = '~'
         
         return hidden_grid
+
+    def attack(self, row: int, col: int) -> bool:
+        '''
+        takes in a set of coordinate to attack
+        check the given coordinate
+        if ship ('S') is at the coordinate,
+        update the grid to 'X' to indicate the hit
+        return boolean
+        '''
+        if self.grid[row][col] == 'S':
+            self.grid[row][col] = 'X'
+            return True
+        else:
+            return False
