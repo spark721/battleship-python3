@@ -17,7 +17,7 @@ class Board():
             self.grid.append(row)
 
 
-    def __str__(self):
+    def __str__(self) -> str:
         '''
         a dunder method to print the grid
         this will get invoked if print() was used on Board
@@ -37,18 +37,11 @@ class Board():
         should only reveal a hit spot
         return hidden_grid
         '''
-        hidden_grid = list()
-        
-        for row in range(self.size):
-            new_row = list('~' * self.size)
-
-            for col in range(self.size):
-                pos = self.grid[row][col]
-                if pos == 'X': new_row[col] = 'X'
-
-            hidden_grid.append(new_row)
-        
-        return hidden_grid
+        return list(map(
+            lambda row: list(map(
+                lambda spot: 'X' if spot == 'X' else '~', 
+                row)), 
+            self.grid))
 
 
     def attack(self, row: int, col: int) -> bool:
