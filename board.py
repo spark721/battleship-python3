@@ -1,4 +1,7 @@
 
+import os
+from typing import Dict, List
+
 class Board():
 
     def __init__(self, size: int = 4):
@@ -16,8 +19,9 @@ class Board():
     def __str__(self):
         '''
         a dunder method to print the grid
-        this will get invoked if print() was used on Board instance
+        this will get invoked if print() was used on Board
         '''
+        os.system('clear||cls')
         hidden = self.hidden()
         print('\n\tThe game board\n')
         for i in range(self.size):
@@ -25,7 +29,7 @@ class Board():
         
         return ''
 
-    def hidden(self) -> list:
+    def hidden(self) -> List[List[str]]:
         '''
         hide ships location
         should only reveal a hit spot
