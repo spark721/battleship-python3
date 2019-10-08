@@ -1,4 +1,6 @@
 
+import time
+
 from board import Board
 from player import Player
 
@@ -11,7 +13,21 @@ class Game():
         self.board = Board(board_size)
 
     def start(self):
-        pass
+        '''
+        initiate the gameplay loop
+        '''
+        self.prep_board()
+
+        while not self.game_over():
+            print(self.board)
+            print(f'\tEnemies remaining: {self.board.num_ships}')
+            print(f'\tYour remaining shots: {self.player.guess}')
+            self.attack()
+        
+        if self.win():
+            print('\nEnemies Nuetralized')
+        elif self.lose():
+            print('\nYou lost')
 
     def game_over(self) -> bool:
         return self.win() or self.lose()
@@ -20,7 +36,7 @@ class Game():
         return self.board.num_ships == 0 and self.player.guess >= 0
 
     def lose(self) -> bool:
-        return self.board.num_ships > 0 and self.player.guess == 0
+        return self.board.num_ships > self.player.guess
 
     def prep_board(self):
         '''
@@ -42,9 +58,12 @@ class Game():
         pos = self.player.input_pos(self.board.size)
         x = pos[0]
         y = pos[-1]
+
         if self.board.attack(y, x):
-            print(f'\n\tDirect HIT at {pos}!')
+            print(f'\n\t!!! Direct HIT at {pos} !!!')
             self.board.num_ships -= 1
         else:
-            print(f'\n\tTarget missed at {pos}')
+            print(f'\n\t... Target missed at {pos} ...')
             self.player.guess -= 1
+
+        time.sleep(1)
