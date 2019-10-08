@@ -30,3 +30,21 @@ class Game():
         '''
         while self.board.num_ships < int(self.player.guess * 0.75):
             self.board.place_ship()
+
+    def attack(self):
+        '''
+        grab player input for attack coordinate
+        attack on the coordinate
+        if ship was hit,
+        decrement num_ships on the board
+        else, decrement player guess
+        '''
+        pos = self.player.input_pos(self.board.size)
+        x = pos[0]
+        y = pos[-1]
+        if self.board.attack(y, x):
+            print(f'\n\tDirect HIT at {pos}!')
+            self.board.num_ships -= 1
+        else:
+            print(f'\n\tTarget missed at {pos}')
+            self.player.guess -= 1
