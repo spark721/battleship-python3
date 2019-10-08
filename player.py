@@ -31,9 +31,13 @@ class Player():
             print('\nEnter x and y coordinates separated by space')
             user_input = input(f'\t(between 0 and {size - 1}): ')
             try:
-                tuple(map(lambda n: int(n), user_input.split()))
+                if len(user_input.split()) != 2:
+                    raise Exception
+                int(user_input.split()[0])
+                int(user_input.split()[-1])
             except:
                 print(f'\tInvalid input: {user_input}')
+                continue
             else:
                 user_input = tuple(map(lambda n: int(n), user_input.split()))
                 if user_input[0] < size and user_input[-1] < size:
