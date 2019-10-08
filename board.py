@@ -1,5 +1,6 @@
 
 import os
+import random
 from typing import List
 
 from ship import Ship
@@ -13,6 +14,7 @@ class Board():
         '''
         self.size = size
         self.grid = list()
+        self.num_ships = 0
 
         for row in range(self.size):
             row = list('~' * self.size)
@@ -31,6 +33,16 @@ class Board():
             print('\t' + ' '.join(hidden_grid[i]))
         
         return ''
+
+
+    def cheat(self):
+        os.system('clear||cls')
+        print('\n\t* Cheat enabled *\n')
+        for i in range(self.size):
+            print('\t' + ' '.join(self.grid[i]))
+        
+        print('\n\t* Cheat enable *\n')
+        print(f'\tNumber of ship spots: {self.num_ships}\n')
 
 
     def hidden(self) -> List[List[str]]:
@@ -61,10 +73,15 @@ class Board():
             return False
 
 
-    def place_ship(self, ship: Ship):
+    def place_ship(self):
         '''
-        takes an instance of ship and place it on the board
+        create an instance of ship
+        ship size is random between 2 and half of board size
+        randomly position ship
         '''
+        ship = Ship(random.randrange(2, self.size / 2))
+        ship.random_position(self)
+
         while True:
             if ship.valid_position(self): break
             else: ship.random_position(self)
@@ -72,6 +89,7 @@ class Board():
         row = ship.pos[0]
         col = ship.pos[1]
         count = ship.size
+        self.num_ships += ship.size
 
         while count > 0:
             self.grid[row][col] = 'S'
