@@ -1,4 +1,13 @@
 
+from game import Game
+
+def play_again() -> bool:
+    while True:
+        play_again = input('\nPlay again? (Yes or No) ')
+        if play_again.lower() == 'yes' or play_again.lower() == 'y':
+            return True
+        elif play_again.lower() == 'no' or play_again.lower() == 'n':
+            return False
 
 def main():
     '''
@@ -15,8 +24,13 @@ def main():
         if game over, prompt user to play again
     terminate
     '''
-    pass
+    flag = True
 
+    while flag:
+        game = Game()
+        game.start()
+        flag = play_again()
+    print('\nThank you for playing\n')
 
 if __name__ == '__main__':
     main()
