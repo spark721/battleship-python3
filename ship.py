@@ -29,13 +29,22 @@ class Ship():
     def valid_position(self, board) -> bool:
         '''
         check if a ship can be place on the grid
+        start from the position
+        loop thru the entire ship size and
+        check if it can be placed or not
         '''
         row, col = self.pos[0], self.pos[1]
 
         if board.grid[row][col] == '~':
-            if self.vector == 'v' and row + self.size < board.size:
-                return True
-            elif self.vector == 'h' and col + self.size < board.size:
-                return True
+            if self.vector == 'v' and row + self.size >= board.size:
+                return False
+            elif self.vector == 'h' and col + self.size >= board.size:
+                return False
+        else: return False
 
-        return False
+        for i in range(1, self.size):
+            if self.vector == 'h' and board.grid[row][col + i] != '~':
+                return False
+            if self.vector == 'v' and board.grid[row + i][col] != '~':
+                return False
+        return True
