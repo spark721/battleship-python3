@@ -36,11 +36,11 @@ class Player():
                 int(user_input.split()[0])
                 int(user_input.split()[-1])
             except:
-                print(f'\tInvalid input: {user_input}')
+                print(f'\t\tInvalid input: {user_input}')
                 continue
             else:
                 user_input = tuple(map(lambda n: int(n), user_input.split()))
                 if user_input[0] < size and user_input[-1] < size:
                     return user_input
                 else:
-                    print(f'\tInvalid input: {user_input}')
+                    print(f'\t\tInvalid input: {user_input}')
