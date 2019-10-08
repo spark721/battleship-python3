@@ -5,8 +5,8 @@ from player import Player
 class Game():
 
     def __init__(self):
-        self.board = Board()
         self.player = Player()
+        self.board = Board()
 
     def start(self):
         pass
