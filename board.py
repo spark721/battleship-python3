@@ -7,7 +7,7 @@ from ship import Ship
 
 class Board():
 
-    def __init__(self, size: int = 5):
+    def __init__(self, size: int = 4):
         '''
         init grid and size default to 4 by 4
         run a loop to fill the grid
