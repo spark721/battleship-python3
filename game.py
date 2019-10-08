@@ -56,6 +56,10 @@ class Game():
         else, decrement player guess
         '''
         pos = self.player.input_pos(self.board.size)
+        if pos == 'CHEATER':
+            self.board.cheat()
+            time.sleep(5)
+            return
         x = pos[0]
         y = pos[-1]
 
@@ -66,4 +70,4 @@ class Game():
             print(f'\n\t... Target missed at {pos} ...')
             self.player.guess -= 1
 
-        time.sleep(1)
+        time.sleep(1.5)

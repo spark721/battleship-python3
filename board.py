@@ -28,21 +28,27 @@ class Board():
         '''
         os.system('clear||cls')
         hidden_grid = self.hidden()
-        print('\n\tThe game board\n')
+        print('\n\t* The game board *\n')
+        print('\t   ', end='')
+        
         for i in range(self.size):
-            print('\t' + ' '.join(hidden_grid[i]))
+            extra_space = ' ' if i < 10 else ''
+            print(f'{i} {extra_space}',end='')
+            if i + 1 == self.size: print('')
+        for i in range(self.size):
+            extra_space = ' ' if i < 10 else ''
+            print(f'\t{i} {extra_space}' + '  '.join(hidden_grid[i]))
         
         return ''
 
 
     def cheat(self):
         os.system('clear||cls')
-        print('\n\t* Cheat enabled *\n')
+        print('\n\t* C H E A T   M O D E *\n')
         for i in range(self.size):
             print('\t' + ' '.join(self.grid[i]))
         
-        print('\n\t* Cheat enable *\n')
-        print(f'\tNumber of ship spots: {self.num_ships}\n')
+        print(f'\t* C H E A T   M O D E *')
 
 
     def hidden(self) -> List[List[str]]:
