@@ -7,7 +7,7 @@ from ship import Ship
 
 class Board():
 
-    def __init__(self, size: int = 4):
+    def __init__(self, size: int = 5):
         '''
         init grid and size default to 4 by 4
         run a loop to fill the grid
@@ -79,7 +79,7 @@ class Board():
         ship size is random between 2 and half of board size
         randomly position ship
         '''
-        ship = Ship(random.randrange(2, self.size / 2))
+        ship = Ship(random.randint(2, int(self.size / 2) + 1))
         ship.random_position(self)
 
         while True:
