@@ -15,6 +15,9 @@ class Player():
 
         while True:
             user_input = input('Select the grid size between 4 and 12: ')
+            if user_input == '':
+                self.guess = 8
+                return 4
             try:
                 int(user_input)
             except:
