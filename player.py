@@ -26,10 +26,10 @@ class Player():
         '''
         prompt user for attack position
         '''
-        print('\nYour turn to attack')
+        print('\n\tYour turn to attack')
         while True:
-            print('\nEnter x and y coordinates separated by space')
-            user_input = input(f'\t(between 0 and {size - 1}): ')
+            print('\n\tEnter x and y coordinates separated by space')
+            user_input = input(f'\t\t\t(between 0 and {size - 1}): ')
             try:
                 if len(user_input.split()) != 2:
                     raise Exception
