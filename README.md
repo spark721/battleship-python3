@@ -37,10 +37,32 @@ A text-based battleship game for terminal or command prompt
     ```
 
 - Game play
-    - Enter X and Y coordinate in that order to attack. Column first, then Row
+    - Enter X and Y coordinate in that order to attack. `Column` first, then `Row`
+    - Players will lose their shots ONLY if they miss
+    - A hit on enemy ship will NOT decrease your number of shots remaining
 
 ## Feature
-- Dynamic grid size. Default grid is set to 4 x 4, but the player may choose the grid size between 4 and 12
+- `Dynamic grid size`. Default grid is set to 4 x 4, but the player may choose the grid size between 4 and 12
+
+- `Dynamic ship size` and `vector`. Ships will take up at minimum `2 spaces` and it may take up depends on size of the grid. Ship's vector is either `horizontal` or `vertical`
+    - That being said, if you make a hit on enemy ship, there must be at least one more spot adjacent to the spot
+    - Code example for random ship size
+    - Instantiating a Ship object from a Board class to place them on the grid
+    ```python
+    import random
+    from ship import Ship
+    class Board():
+        # ... code omitted ...
+        Ship(random.randint(2, int(self.size / 2) + 1))
+    ```
+
+    - Code example for random ship vector
+    ```python
+    import random
+    class Ship():
+        # ... code omitted ...
+        self.vector = random.choice(['h', 'v'])
+    ```
 
 - My favorite part of this project was using lambda functions
 
@@ -65,3 +87,8 @@ A text-based battleship game for terminal or command prompt
                 row)), 
             self.grid))
         ```
+
+## Cheat mode
+- Implemented for debugging purposes during the development, but I have decided to make it available to players
+- Instead of entering coordinates to attack, try typing in `CHEATER` (yes, all caps because you are cheating!)
+- Surprise
