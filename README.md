@@ -44,9 +44,9 @@ A text-based battleship game for terminal or command prompt
 ## Feature
 - `Dynamic grid size`. Default grid is set to 4 x 4, but the player may choose the grid size between 4 and 12
 
-- `Dynamic ship size` and `vector`. Ships will take up at minimum `2 spaces` and it may take up depends on size of the grid. Ship's vector is either `horizontal` or `vertical`
-    - That being said, if you make a hit on enemy ship, there must be at least one more spot adjacent to the spot
-    - Code example for random ship size
+- `Dynamic ship size` and `vector`. Ships will take up at minimum `2 spaces` and it may take up more depends on the size of the grid. Ship's vector is randomly selected between `horizontal` and `vertical`
+    - That being said, if you successfully hit a enemy ship, there must be at least one more adjacent spot
+- Code example for random ship size
     - Instantiating a Ship object from a Board class to place them on the grid
     ```python
     import random
@@ -56,7 +56,7 @@ A text-based battleship game for terminal or command prompt
         Ship(random.randint(2, int(self.size / 2) + 1))
     ```
 
-    - Code example for random ship vector
+- Code example for random ship vector
     ```python
     import random
     class Ship():
@@ -87,6 +87,16 @@ A text-based battleship game for terminal or command prompt
                 row)), 
             self.grid))
         ```
+
+- Another thing that I learned during this project is about the `print` function. The `print` function takes an `optional second argument` that is by default `'\n'` (a line break). This can be changed by passing in a second argument to a print function.
+
+    - For example, I passed in an empty string as a second argument to print the x axis coordinates on top of the board
+    ```python
+    for i in range(self.size):
+            extra_space = ' ' if i < 10 else ''
+            print(f'{i} {extra_space}',end='')
+            if i + 1 == self.size: print('')
+    ```
 
 ## Cheat mode
 - Implemented for debugging purposes during the development, but I have decided to make it available to players
