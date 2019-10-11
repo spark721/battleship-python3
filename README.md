@@ -2,7 +2,7 @@
 # Battleship
 
 ## Overview
-A text-based battleship game for terminal or command prompt
+A text-based battleship game for terminal
 
 ## Technology used
 - Object-orient programming
